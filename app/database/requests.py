@@ -9,7 +9,7 @@ import logging
 from config import settings
 from aiogram.types import Message
 
-from app.crypto import MyCrypto
+from app.crypto.crypto_for_passw import MyCrypto
 from regex import pattern
 
 

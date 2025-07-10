@@ -7,7 +7,7 @@ from aiogram.types import CallbackQuery, Message
 
 import app.database.requests as rq
 import app.keyboards as kb
-from app.states import Admin
+from app.handlers.states_for_registration import Admin
 from bot import bot
 from config import settings
 

@@ -22,6 +22,3 @@ class MyCrypto(Singleton):
         ciphertext = password[32:]
         cipher = AES.new(self.key, AES.MODE_EAX, nonce=nonce)
         return cipher.decrypt_and_verify(ciphertext, tag).decode("utf8")
-
-
-# mycrypto = MyCrypto()

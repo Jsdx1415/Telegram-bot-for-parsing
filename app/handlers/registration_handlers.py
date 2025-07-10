@@ -6,8 +6,8 @@ from aiogram.types import CallbackQuery, Message
 
 import app.database.requests as rq
 import app.keyboards as kb
-import app.parser.confirm_esch as pr
-from app.states import Register, Reregister
+import app.parser.confirm_reg as pr
+from app.handlers.states_for_registration import Register, Reregister
 from bot import bot
 
 router = Router()
