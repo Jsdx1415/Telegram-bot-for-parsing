@@ -46,7 +46,6 @@ scheduler.add_job(
 if __name__ == "__main__":
     try:
         asyncio.run(main())
-        # asyncio.get_event_loop().run_forever()
     except KeyboardInterrupt:
         logging.info("Бот выключен")
         print("Бот выключен")

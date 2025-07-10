@@ -32,10 +32,10 @@ main = InlineKeyboardMarkup(
     ]
 )
 
-admin = InlineKeyboardMarkup(
+admin = InlineKeyboardMarkup(  #клавиатура для админки
     inline_keyboard=[
-        [InlineKeyboardButton(text="Кол-во пользователей", callback_data="amount")],
-        [InlineKeyboardButton(text="Рассылка", callback_data="everyone")],
-        [InlineKeyboardButton(text="Список пользователей", callback_data="list")],
+        [InlineKeyboardButton(text="Кол-во пользователей", callback_data="amount_of_users")],
+        [InlineKeyboardButton(text="Рассылка", callback_data="msg_for_everyone")],
+        [InlineKeyboardButton(text="Список пользователей", callback_data="list_of_all_users")],
     ]
 )
