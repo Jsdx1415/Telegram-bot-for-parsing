@@ -37,10 +37,7 @@ async def parse_data(login, password, tg_id):
             context = await browser.new_context()
             page = await context.new_page()
 
-            """
-            YOUR PARCING LOGIC!!
-            
-            """
+            # YOUR PARCING LOGIC!!
 
             logging.info(msg="Парсинг завершен, выход из метода парсинга...")
 

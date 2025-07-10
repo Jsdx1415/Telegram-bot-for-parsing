@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     bot_token: str
     db_url: str
     key: str
-    admin: list
+    admin: list[int]
 
     class Config:
         env_file = ".env"

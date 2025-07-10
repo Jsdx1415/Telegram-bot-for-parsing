@@ -15,11 +15,9 @@ async def check_parser(data, tg_id: int):
             context = await browser.new_context()
             page = await context.new_page()
 
-            """
-            YOUR CHECK_PARSER LOGIC!!!
-            FUNCTION MUST RETURN TRUE OR FALSE!!
-            
-            """
+            # YOUR CHECK_PARSER LOGIC!!!
+            # FUNCTION MUST RETURN TRUE OR FALSE!!
+
             return True  # только для теста!!!
 
     except Exception as e:

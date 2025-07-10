@@ -37,7 +37,7 @@ async def main():
 scheduler = AsyncIOScheduler()  # Планируем выполнение функции каждые час
 scheduler.add_job(
     parser_main, "interval", hours=1
-)  # дада, надо потом будет сменить hours = 1 (minutes=3)
+)  # можно сменить на любой требуемый интервал
 
 
 if __name__ == "__main__":
