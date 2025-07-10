@@ -8,11 +8,11 @@ from app.crypto.crypto_for_passw import MyCrypto
 from config import settings
 import app.database.requests as rq
 
-from bot import bot
-
 
 async def parser_main():
     logging.info("Начало парсинга")
+    from main import bot
+
     for user in await rq.get_all_users():
         key = settings.key
         user = user["User"]

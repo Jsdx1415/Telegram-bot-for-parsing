@@ -9,7 +9,6 @@ import app.database.requests as rq
 import app.keyboards as kb
 import app.parser.confirm_reg as pr
 from app.handlers.states_for_registration import Reregister
-from bot import bot
 
 router = Router()
 
@@ -55,6 +54,8 @@ async def change(callback: CallbackQuery, state: FSMContext):
     F.data == "relogin_continue2"
 )  # если пользователь подтвердил правильность введных им данных
 async def continue_2(callback: CallbackQuery, state: FSMContext):
+    from main import bot
+
     logging.info("начало проверки regex")
     await callback.answer()
     data = await state.get_data()

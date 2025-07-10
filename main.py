@@ -22,8 +22,7 @@ logging.getLogger("aiogram").setLevel(logging.WARNING)
 
 
 async def main():
-    from bot import bot
-
+    bot = Bot(settings.bot_token)
     await async_main()
     dp = Dispatcher()
     for r in routers:

@@ -8,7 +8,6 @@ from aiogram.types import CallbackQuery, Message
 import app.database.requests as rq
 import app.keyboards as kb
 from app.handlers.states_for_registration import Admin
-from bot import bot
 from config import settings
 
 router = Router()
@@ -42,6 +41,8 @@ async def mesg_for_everyone(callback, state: FSMContext):
     Admin.all_message
 )  # также отвечает за "Рассылка", но тут отправляем сообщение
 async def mesg_for_everyone2(message, state):
+    from main import bot
+
     users = await rq.get_all_tg_ids()
     mess = message.text
     for i in users:
