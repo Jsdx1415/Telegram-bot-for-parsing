@@ -2,7 +2,7 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
-from config import settings
+from app.config import settings
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 from app.handlers import routers

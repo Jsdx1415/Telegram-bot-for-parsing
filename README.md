@@ -40,30 +40,62 @@
    pip install -r requirements.txt
    ```
 
-## Конфигурация
+## Configuration
 
-Создайте файл `.env` в корне проекта по примеру `.env.example`:
+Create a `.env` file in the project root based on `.env.example`:
 
 ```
-BOT_TOKEN=ваш_токен_бота
-DB_URL=postgresql+asyncpg://user:password@localhost:5432/mydb
-KEY=секретный_ключ_для_шифрования
+BOT_TOKEN=<your_bot_token>
+DB_URL=postgresql+asyncpg://<your_username>:<your_password>@localhost:5432/<your_database>
+KEY=<your_encryption_key>
 ADMIN=[123456789]
 ```
 
-## Развёртывание PostgreSQL в Docker Desktop
+## Развёртывание PostgreSQL с помощью Docker CLI
+
+Чтобы быстро запустить PostgreSQL через Docker в командной строке, выполните следующие шаги:
+
+1. **Загрузка образа**:
+   ```bash
+   docker pull postgres
+   ```
+2. **Запуск контейнера**:
+   ```bash
+   docker run -d \
+     --name telegram-postgres \
+     -e POSTGRES_USER=<ваш_пользователь> \
+     -e POSTGRES_PASSWORD=<ваш_пароль> \
+     -e POSTGRES_DB=<ваша_база> \
+     -p 5432:5432 \
+     -v telegram-postgres-data:/var/lib/postgresql/data \
+     postgres
+   ```
+3. **Проверка статуса**:
+   ```bash
+   docker ps
+   ```
+4. **Подключение из бота**
+
+   В файле `.env` вашего бота укажите:
+   ```env
+   DB_URL=postgresql+asyncpg://<your_username>:<your_password>@localhost:5432/<your_database>
+   ```
+
+---
+
+## Дополнительный вариант: Развёртывание PostgreSQL в Docker Desktop
 
 Чтобы развернуть PostgreSQL без файлов Compose, воспользуйтесь графическим интерфейсом Docker Desktop:
 
 1. Откройте **Docker Desktop**.
 2. Перейдите на вкладку **Images** и нажмите **Pull**. Введите образ:
    ```text
-   postgres:13
+   postgres
    ```
-3. После скачивания перейдите в **Containers / Apps** и нажмите **Run** напротив образа `postgres:13`.
+3. После скачивания перейдите в **Containers / Apps** и нажмите **Run** напротив образа `postgres`.
 4. В окне запуска задайте параметры:
    - **Container Name**: `telegram-postgres`
-   - **Image**: `postgres:13`
+   - **Image**: `postgres`
    - **Environment Variables**:
      - `POSTGRES_USER` = `<your_username>`
      - `POSTGRES_PASSWORD` = `<your_password>`
@@ -72,7 +104,7 @@ ADMIN=[123456789]
    - **Volumes**: создайте новый volume `telegram-postgres-data`, смонтируйте в `/var/lib/postgresql/data`
 5. Нажмите **Run**. Контейнер запустится и будет доступен по адресу `localhost:5432`.
 
-В файле `.env` вашего бота укажите параметры подключения:
+В файле `.env` вашего бота укажите те же параметры подключения:
 
 ```env
 DB_URL=postgresql+asyncpg://<your_username>:<your_password>@localhost:5432/<your_database>
@@ -84,20 +116,6 @@ DB_URL=postgresql+asyncpg://<your_username>:<your_password>@localhost:5432/<your
 
 ```bash
 python main.py
-```
-
-## Структура проекта
-
-```plain
-├── main.py                # Точка входа: инициализация бота и шедулера
-├── config/                # Pydantic Settings, конфигурация
-├── app/
-│   ├── handlers/          # Роутеры команд (registration, parser и др.)
-│   ├── database/          # Модели и функции работы с базой данных
-│   └── parser/            # Логика Playwright-парсера(нужно написать самому для ваших целей)
-├── requirements.txt       # Зависимости проекта
-├── .env.example           # Пример файла окружения
-└── README.md              # Этот файл
 ```
 
 ## Команды бота
@@ -117,3 +135,4 @@ python main.py
 ---
 
 Если возникнут вопросы или предложения — открывайте issue или присылайте PR!
+
