@@ -5,7 +5,7 @@ from playwright.async_api import async_playwright
 
 
 async def check_parser(data, tg_id: int):
-    logging.info("Начало проверки, заход в ескул")
+    logging.info("Начало проверки, заход на сайт")
     login = data["login"]
     password = data["password"]
     try:
@@ -16,8 +16,8 @@ async def check_parser(data, tg_id: int):
             page = await context.new_page()
 
             """
-            YOUR CHECK_PARSER LOGIC
-            FUNCTION MUST RETURN TRUE OR FALSE
+            YOUR CHECK_PARSER LOGIC!!!
+            FUNCTION MUST RETURN TRUE OR FALSE!!
             
             """
             return True  # только для теста!!!

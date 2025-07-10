@@ -5,7 +5,6 @@ from playwright.async_api import async_playwright
 
 from config import settings
 from app.crypto.crypto_for_passw import MyCrypto
-from config import settings
 import app.database.requests as rq
 
 
@@ -33,13 +32,13 @@ async def parse_data(login, password, tg_id):
     logging.info("Продолжение парсинга")
     try:
         async with async_playwright() as p:
-            logging.info(msg="Запущен процесс авторизации в системе ESchool.")
+            logging.info(msg="Запущен процесс авторизации на сайте")
             browser = await p.chromium.launch(headless=True)
             context = await browser.new_context()
             page = await context.new_page()
 
             """
-            YOUR PARCING LOGIC
+            YOUR PARCING LOGIC!!
             
             """
 

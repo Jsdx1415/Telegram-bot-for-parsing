@@ -4,8 +4,10 @@ from sqlalchemy.ext.asyncio import AsyncAttrs, async_sessionmaker, create_async_
 
 from config import settings
 
-engine = create_async_engine(settings.db_url)
-async_session = async_sessionmaker(engine)
+engine = create_async_engine(
+    settings.db_url
+)  # тут ваша строка подключения к бд, создаем движок
+async_session = async_sessionmaker(engine)  # создаем сессию
 
 
 class Base(AsyncAttrs, DeclarativeBase):
@@ -26,6 +28,6 @@ class User(Base):
     #     return f"User with id {str(self.tg_id)} and login {self.login}"
 
 
-async def async_main():
+async def async_main():  # главная функция, создающая таблиц в бд
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)

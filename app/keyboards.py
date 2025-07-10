@@ -1,13 +1,17 @@
-from aiogram.types import (
-    ReplyKeyboardMarkup,
-    KeyboardButton,
-    InlineKeyboardMarkup,
-    InlineKeyboardButton,
-)
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 
-def reg_keyboard_builder(relogin: bool = False):
+main = InlineKeyboardMarkup(  # самая первая клавиатура для декоративной кнопки "продолжить"
+    inline_keyboard=[
+        [InlineKeyboardButton(text="Продолжить", callback_data="continue")]
+    ]
+)
+
+
+def reg_keyboard(
+    relogin: bool = False,
+):  # клавиатура для потдверждения введенных пользователем данных при регистрации
     return InlineKeyboardMarkup(
         inline_keyboard=[
             [
@@ -25,12 +29,6 @@ def reg_keyboard_builder(relogin: bool = False):
         ]
     )
 
-
-main = InlineKeyboardMarkup(
-    inline_keyboard=[
-        [InlineKeyboardButton(text="Продолжить", callback_data="continue")]
-    ]
-)
 
 admin = InlineKeyboardMarkup(  # клавиатура для админки
     inline_keyboard=[

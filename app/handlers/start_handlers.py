@@ -30,3 +30,4 @@ async def cmd_start(message: Message):
 @router.message(Command("parser"))  # just for test
 async def parsing(message: Message):
     await parser_main()
+    logging.info("Начало парсинша по команде /parser")

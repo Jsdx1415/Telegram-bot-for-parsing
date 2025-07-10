@@ -37,7 +37,7 @@ async def confirm(message: Message, state: FSMContext):
     data = await state.get_data()
     msg = await message.answer(
         f'Данные верны?\nВаш логин: {data["login"]}\nВаш пароль: {data["password"]}',  # подтверждаем правильность введенных данных
-        reply_markup=kb.reg_keyboard_builder(),
+        reply_markup=kb.reg_keyboard(),
     )
     await state.update_data(msg_id=msg.message_id)
 

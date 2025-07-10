@@ -1,9 +1,9 @@
 import asyncio
+import logging
+
 from aiogram import Bot, Dispatcher
 from config import settings
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-
-import logging
 
 from app.handlers import routers
 from app.database.models import async_main
