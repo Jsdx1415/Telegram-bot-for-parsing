@@ -5,8 +5,10 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 import logging
 
-from app.handlers.handlers import router as registration_router
+from app.handlers.start_handlers import router as start_router
 from app.handlers.admin_handlers import router as admin_router
+from app.handlers.registration_handlers import router as reg_router
+from app.handlers.reregistration_handlers import router as rereg_router
 from app.database.models import async_main
 from app.parser.main_parser import parser_main
 
@@ -28,8 +30,10 @@ async def main():
 
     await async_main()
     dp = Dispatcher()
-    dp.include_router(registration_router)
+    dp.include_router(start_router)
     dp.include_router(admin_router)
+    dp.include_router(reg_router)
+    dp.include_router(rereg_router)
 
     logging.info("Бот запущен")
     print("Бот включен")
